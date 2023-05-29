@@ -1,0 +1,17 @@
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;
+    padding-left: 16px;
+    width: 20rem;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #9DA2A8;
+  }
+  
+  .active {
+    color: #0DA698;
+  }
+  

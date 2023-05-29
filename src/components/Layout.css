@@ -1,0 +1,28 @@
+header {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #232D36;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  main {
+    flex: 8;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  
+  footer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  h1 {
+    color: #9DA2A8;
+    font-size: 1.25rem;
+  }
+  
