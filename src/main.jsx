@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
-import { ContatosContextProvider } from './contexts/ContatosContextx.jsx'
-
+import { UserContextProvider } from './contexts/UserContext.jsx'
+import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <ContatosContextProvider>
-    <App />
-  </ContatosContextProvider>,
+  <React.StrictMode>
+    <UserContextProvider>
+      <App />
+    </UserContextProvider>
+  </React.StrictMode>,
 )
