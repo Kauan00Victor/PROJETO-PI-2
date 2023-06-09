@@ -1,4 +1,6 @@
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -13,22 +15,28 @@ header {
   background: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0));
   padding: 10px;
 }
+
 a {
-  color: white; /* Cor do texto do link */
+  color: white;
+  /* Cor do texto do link */
   text-decoration: none;
   position: relative;
 }
+
 a:hover {
-  animation: pulse 1s infinite; /* animação do texto link */
+  animation: pulse 1s infinite;
+  /* animação do texto link */
 }
 
 @keyframes pulse {
   0% {
     text-shadow: 0 0 0 rgba(0, 0, 255, 0.4), 0 0 0 rgba(0, 0, 255, 0.4), 0 0 0 rgba(0, 0, 255, 0.4);
   }
-    50% {
+
+  50% {
     text-shadow: 0 0 10px rgba(0, 0, 255, 1), 0 0 20px rgba(0, 0, 255, 0.7), 0 0 30px rgba(0, 0, 255, 0.4);
   }
+
   100% {
     text-shadow: 0 0 0 rgba(0, 0, 255, 0.4), 0 0 0 rgba(0, 0, 255, 0.4), 0 0 0 rgba(0, 0, 255, 0.4);
   }
@@ -47,4 +55,7 @@ footer {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(to top, #000000, rgba(0, 0, 0, 0));
+  padding: 10px;
+  color: white;
 }
