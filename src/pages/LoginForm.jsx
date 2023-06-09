@@ -12,7 +12,7 @@ export default function LoginForm(props) {
   const validaEmail = {
     required: {
       value: true,
-      message: 'Email é obrigatorio',
+      message: 'Digite o email',
     },
     pattern: {
       value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
@@ -23,7 +23,7 @@ export default function LoginForm(props) {
   const validaSenha = {
     required: {
       value: true,
-      message: 'Senha é obrigatoria',
+      message: 'Digite a senha',
     },
     minLength: {
       value: 8,

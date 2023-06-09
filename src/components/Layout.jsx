@@ -3,8 +3,9 @@ import Navbar from "./Navbar"
 import './Layout.css'
 
 export default function Layout() {
+
   return (
-    <>
+    <> 
       <header>
         <Navbar />
       </header>
