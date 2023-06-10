@@ -1,4 +1,4 @@
-import style from "./Erro404.css"
+import "./Erro404.css"
 
 export default function Erro404() {
   return (
