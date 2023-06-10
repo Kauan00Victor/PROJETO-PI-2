@@ -1,14 +1,16 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDf8VYTaJYRfElTofkpCRa3pQxfElu5-6M",
-    authDomain: "back-front-react1-e9997.firebaseapp.com",
-    projectId: "back-front-react1-e9997",
-    storageBucket: "back-front-react1-e9997.appspot.com",
-    messagingSenderId: "119412134693",
-    appId: "1:119412134693:web:8870018c67b2266d6800cc"
+  apiKey: "AIzaSyB24hUkVyXK_vXDP92iBcHpcjsy04Utq8g",
+  authDomain: "back-end-react2.firebaseapp.com",
+  projectId: "back-end-react2",
+  storageBucket: "back-end-react2.appspot.com",
+  messagingSenderId: "841571748550",
+  appId: "1:841571748550:web:cc8a00cf114d6f585ee5c7"
 };
 
 const app = initializeApp(firebaseConfig);
 
-export { app };
+const urlApi = "https://back-end-react2-default-rtdb.firebaseio.com/tarefas.json"
+
+export { app, urlApi}
