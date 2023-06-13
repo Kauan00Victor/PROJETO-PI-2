@@ -5,20 +5,20 @@ export default function Home() {
   return (
     <Carousel>
       <Carousel.Item>
-        <img  width="800px" heigth="400px"
+        <img
           className="d-block w-100"
-          src="https://files.tecnoblog.net/wp-content/uploads/2015/10/dell_building-1060x660.jpg"
+          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
-          <h3>Razor 1911</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>TECH SYSTEMS</h3>
+          <p>A Tech Systems: Transformando o futuro com tecnologia de ponta!</p>
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img width="800px" heigth="400px"
+        <img
           className="d-block w-100"
-          src="https://files.tecnoblog.net/wp-content/uploads/2023/01/razer-edge-hero-1060x596.jpg"
+          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="Second slide"
         />
 
@@ -28,7 +28,7 @@ export default function Home() {
         </Carousel.Caption>
       </Carousel.Item>
       <Carousel.Item>
-        <img width="800px" heigth="400px"
+        <img
           className="d-block w-100"
           src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="Third slide"
