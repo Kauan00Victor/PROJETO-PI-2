@@ -10,7 +10,7 @@ export default function NovoForm() {
   async function onSubmit(data) {
     try {
       await insereTarefas(data)
-      navigate('/')
+      navigate('/listadetarefas')
     } catch (error) {
       console.log(error.message)
     }

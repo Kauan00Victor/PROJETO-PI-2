@@ -8,7 +8,7 @@ export default function Layout() {
 
   return (
     <>
-    <Header />
+    <Header className="Header1" />
       <header>
         <Navbar />
       </header>

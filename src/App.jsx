@@ -8,6 +8,7 @@ import Login from './pages/Login'
 import Novo from './pages/Novo'
 import Perfil from './pages/Perfil'
 import './App.css'
+import HomeList from './pages/HomeList'
 
 export default function App() {
   const { logado } = useContext(UserContext)
@@ -20,6 +21,7 @@ export default function App() {
             <Route index element={<Home />} />
             <Route path="novo" element={<Novo />} />
             <Route path="perfil/:id" element={<Perfil />} />
+            <Route path='listadetarefas' element={<HomeList />} />
           </Route>
           : <Route index element={<Login />} />}
         <Route path="*" element={<Erro404 />} />

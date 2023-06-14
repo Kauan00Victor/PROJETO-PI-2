@@ -14,6 +14,7 @@ header {
   align-items: center;
   background: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0));
   padding: 10px;
+  
 }
 .Header {
   flex: 1;
