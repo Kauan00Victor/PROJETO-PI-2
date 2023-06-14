@@ -1,5 +1,8 @@
 import HomeList from "./HomeList";
 import Carousel from 'react-bootstrap/Carousel';
+import imagemdell from '../img/dell.jpg'
+import imagecomp from '../img/componentes-computador.jpg'
+import imagemic from '../img/microsoft.jpeg'
 
 export default function Home() {
   return (
@@ -7,7 +10,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
+          src={imagemdell}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -18,7 +21,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
+          src={imagemic}
           alt="Second slide"
         />
 
@@ -30,7 +33,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
+          src={imagecomp}
           alt="Third slide"
         />
 

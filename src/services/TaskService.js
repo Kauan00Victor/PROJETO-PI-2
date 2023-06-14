@@ -12,7 +12,9 @@ export async function listaTarefas() {
         .catch((error) => {throw Error("Deu Ruim")})
         return tarefas
 }
+//GET pegar, listar
 
+//POST criar, inserir
 export async function insereTarefas(tarefa){
     await fetch(urlApi  + "tarefas.json", {
         method: 'POST',
@@ -24,6 +26,22 @@ export async function insereTarefas(tarefa){
     .catch((error) => {throw Error("Deu Ruim")})
 
 }
+
+export async function modificarTarefas(tarefa){
+    await fetch(urlApi  + "tarefas/" + tarefa.key + ".json", {
+        method: 'PUT',
+        body: JSON.stringify({nome: tarefa.nome, priotiodade: tarefa.prioridade}),
+        headers: {
+            'Content-type':'application/json'
+        }
+    })
+    .catch((error) => {throw Error("Deu Ruim")})
+
+}
+// PUT alterar, modificar
+
+//DELETE destruir, remover
+
 export async function removeTarefa(key){
     await fetch(urlApi + "tarefas/" + key + ".json", {
         method: 'DELETE'
