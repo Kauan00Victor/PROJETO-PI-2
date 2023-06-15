@@ -16,6 +16,7 @@ export default function Navbar() {
     <ul>
       <li><NavLink to="/">Home</NavLink></li>
       <li><NavLink to="/novo">Nova Tarefa</NavLink></li>
+      <li><NavLink to="/produtos">Produtos</NavLink></li>
       <li><NavLink to={`/perfil/${userId}`}>Perfil</NavLink></li>
       <li><NavLink to="/listadetarefas">Lista de Tarefas</NavLink></li>
       <button onClick={handleClick}>Sair</button>

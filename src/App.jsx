@@ -10,6 +10,7 @@ import Perfil from './pages/Perfil'
 import './App.css'
 import HomeList from './pages/HomeList'
 import Editar from './pages/Editar'
+import Produtos from './pages/Produtos'
 
 export default function App() {
   const { logado } = useContext(UserContext)
@@ -24,6 +25,7 @@ export default function App() {
             <Route path="perfil/:id" element={<Perfil />} />
             <Route path='listadetarefas' element={<HomeList />} />
             <Route path='editar/:key' element={<Editar/>} />
+            <Route path='produtos' element={<Produtos/>} />
           </Route>
           : <Route index element={<Login />} />}
         <Route path="*" element={<Erro404 />} />

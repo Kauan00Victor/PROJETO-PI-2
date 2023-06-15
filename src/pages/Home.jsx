@@ -1,8 +1,8 @@
 import HomeList from "./HomeList";
 import Carousel from 'react-bootstrap/Carousel';
-import imagemdell from '../img/dell.jpg'
-import imagecomp from '../img/componentes-computador.jpg'
-import imagemic from '../img/microsoft.jpeg'
+import vava from '../img/VAVA.jpg'
+import forza2 from '../img/FORZA2.jpg'
+import gta from '../img/GTA.jpg'
 
 export default function Home() {
   return (
@@ -10,7 +10,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imagemdell}
+          src={gta}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -21,7 +21,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imagemic}
+          src={forza2}
           alt="Second slide"
         />
 
@@ -33,7 +33,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={imagecomp}
+          src={vava}
           alt="Third slide"
         />
 
