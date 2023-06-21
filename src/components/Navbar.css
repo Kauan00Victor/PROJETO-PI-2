@@ -7,3 +7,12 @@ ul {
     flex-direction: row;
     justify-content: space-around;
 }
+.Navbar {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    background: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0));
+    padding: 10px;
+}  

@@ -1,16 +1,17 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB24hUkVyXK_vXDP92iBcHpcjsy04Utq8g",
-  authDomain: "back-end-react2.firebaseapp.com",
-  projectId: "back-end-react2",
-  storageBucket: "back-end-react2.appspot.com",
-  messagingSenderId: "841571748550",
-  appId: "1:841571748550:web:cc8a00cf114d6f585ee5c7"
+  apiKey: "AIzaSyDf8VYTaJYRfElTofkpCRa3pQxfElu5-6M",
+  authDomain: "back-front-react1-e9997.firebaseapp.com",
+  databaseURL: "https://back-front-react1-e9997-default-rtdb.firebaseio.com",
+  projectId: "back-front-react1-e9997",
+  storageBucket: "back-front-react1-e9997.appspot.com",
+  messagingSenderId: "119412134693",
+  appId: "1:119412134693:web:8870018c67b2266d6800cc"
 };
 
 const app = initializeApp(firebaseConfig);
 
-const urlApi = "https://back-end-react2-default-rtdb.firebaseio.com/"
+const urlApi = "https://back-front-react1-e9997-default-rtdb.firebaseio.com/"
 
 export { app, urlApi}

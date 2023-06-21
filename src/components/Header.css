@@ -1,7 +1,11 @@
 .logo {
-    width: 5rem;
-    height: 5rem;
+    margin-top: 10px;
+    margin-bottom: 0px;
 }
-.Header1 {
+
+.Header {
+    flex: 1;
+    display: flex;
     background-color: black;
-}
+  }
+  

@@ -13,13 +13,18 @@ export default function Navbar() {
   }
 
   return (
-    <ul>
-      <li><NavLink to="/">Home</NavLink></li>
-      <li><NavLink to="/novo">Nova Tarefa</NavLink></li>
-      <li><NavLink to="/produtos">Produtos</NavLink></li>
-      <li><NavLink to={`/perfil/${userId}`}>Perfil</NavLink></li>
-      <li><NavLink to="/listadetarefas">Lista de Tarefas</NavLink></li>
-      <button onClick={handleClick}>Sair</button>
-    </ul>
+    <section className="Navbar">
+      <ul>
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/Jogos">Jogos</NavLink></li>
+        <li><NavLink to="/Favoritos">Favoritos</NavLink></li>
+        <li><NavLink to={`/perfil/${userId}`}>Perfil</NavLink></li>
+        {
+          userId !== null ?
+            <button onClick={handleClick}>Logout</button> :
+            <button onClick={handleClick}>Login</button>
+        }
+      </ul>
+    </section>
   )
 }

@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaGithub, FaYoutube} from 'react-icons/fa'
+import { FaFacebook, FaInstagram, FaGithub, FaYoutube } from 'react-icons/fa'
 import './Footer.css'
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
                     <FaYoutube />
                 </li>
             </ul>
-            <p><span>Tech systems </span>&copy; Direitos autorais - 2023</p>
+            <p><span>Razor-1911 </span>&copy; Nenhum direito reservado</p>
         </footer>
     )
 }

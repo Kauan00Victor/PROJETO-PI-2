@@ -5,12 +5,11 @@ import UserContext from './contexts/UserContext'
 import Erro404 from './pages/Erro404'
 import Home from './pages/Home'
 import Login from './pages/Login'
-import Novo from './pages/Novo'
+import Jogos from './pages/Jogos'
 import Perfil from './pages/Perfil'
 import './App.css'
-import HomeList from './pages/HomeList'
-import Editar from './pages/Editar'
-import Produtos from './pages/Produtos'
+import Favoritos from './pages/Favoritos'
+import CadastroForm from './pages/CadastroForm'
 
 export default function App() {
   const { logado } = useContext(UserContext)
@@ -21,13 +20,12 @@ export default function App() {
         {logado ?
           <Route element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="novo" element={<Novo />} />
+            <Route path="Jogos" element={<Jogos />} />
             <Route path="perfil/:id" element={<Perfil />} />
-            <Route path='listadetarefas' element={<HomeList />} />
-            <Route path='editar/:key' element={<Editar/>} />
-            <Route path='produtos' element={<Produtos/>} />
+            <Route path='Favoritos' element={<Favoritos />} />
           </Route>
-          : <Route index element={<Login />} />}
+          : <Route path="/" element={<Login />} />}
+          <Route path="/Cadastro" element={<CadastroForm />} />
         <Route path="*" element={<Erro404 />} />
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,4 @@
-import HomeList from "./HomeList";
 import Carousel from 'react-bootstrap/Carousel';
-import vava from '../img/VAVA.jpg'
-import forza2 from '../img/FORZA2.jpg'
-import gta from '../img/GTA.jpg'
 
 export default function Home() {
   return (
@@ -10,7 +6,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={gta}
+          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="First slide"
         />
         <Carousel.Caption>
@@ -21,7 +17,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={forza2}
+          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="Second slide"
         />
 
@@ -33,7 +29,7 @@ export default function Home() {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src={vava}
+          src="https://ravel.com.br/blog/wp-content/uploads/2020/01/componentes-computador.jpg"
           alt="Third slide"
         />
 

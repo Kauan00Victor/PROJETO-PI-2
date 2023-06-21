@@ -10,13 +10,14 @@ export default function NovoForm() {
   async function onSubmit(data) {
     try {
       await insereTarefas(data)
-      navigate('/listadetarefas')
+      navigate('/Favoritos')
     } catch (error) {
       console.log(error.message)
     }
   }
 
-  return (
+  return (<h1></h1>
+  /*
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
@@ -33,6 +34,6 @@ export default function NovoForm() {
         </div>
         <button>Salvar</button>
       </form>
-    </>
+    </>*/
   )
 }
