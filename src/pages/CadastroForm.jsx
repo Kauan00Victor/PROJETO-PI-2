@@ -1,108 +1,49 @@
 import React, { useState } from 'react';
-import './Login.css'
-import logo from "../img/logoLogin.png"
+import { cadastrar } from '../services/AuthService';
+import './Login.css';
+import logo from '../img/logoLogin.png';
 
 function Cadastro() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [sexo, setSexo] = useState('');
 
   const handleCadastro = () => {
-    // Lógica para cadastrar o usuário
-    console.log('Usuário cadastrado!');
+    // Chamar a função de cadastro no Firebase
+    cadastrar(email, senha, nome)
+      .then((uid) => {
+        console.log('Usuário cadastrado com sucesso!');
+        console.log('UID do usuário:', uid);
+
+        // Confirma que foi cadastrado e Redirecionar para a página de login
+      })
+      .catch((error) => {
+        console.error('Erro ao cadastrar usuário:', error);
+        // Tratar o erro e exibir uma mensagem adequada para o usuário
+      });
   };
 
   return (
     <section className="form-login">
-      <div className='cadastro'>
+      <div className="cadastro">
         <img src={logo} id="logoLogin" alt="Logo da empresa" />
-        <div className='cadastro'>
+        <div className="cadastro">
           <h1>Cadastro</h1>
-          <label htmlFor="nome">Nome:</label>
-          <input
-            type="text"
-            id="nome"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-          />
 
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <input type="text" id="nome" placeholder="Nome de Usuario" value={nome} onChange={(e) => setNome(e.target.value)} />
 
-          <label htmlFor="senha">Senha:</label>
-          <input
-            type="password"
-            id="senha"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-          />
+          <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
 
-          <label htmlFor="confirmarSenha">Confirmar Senha:</label>
-          <input
-            type="password"
-            id="confirmarSenha"
-            value={confirmarSenha}
-            onChange={(e) => setConfirmarSenha(e.target.value)}
-          />
+          <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
 
-          <label htmlFor="telefone">Telefone:</label>
-          <input
-            type="tel"
-            id="telefone"
-            value={telefone}
-            onChange={(e) => setTelefone(e.target.value)}
-          />
-
-          <div>
-            <label>Sexo:</label>
-            <div>
-              <input
-                type="radio"
-                id="masculino"
-                name="sexo"
-                value="masculino"
-                checked={sexo === 'masculino'}
-                onChange={(e) => setSexo(e.target.value)}
-              />
-              <label htmlFor="masculino">Masculino</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="feminino"
-                name="sexo"
-                value="feminino"
-                checked={sexo === 'feminino'}
-                onChange={(e) => setSexo(e.target.value)}
-              />
-              <label htmlFor="feminino">Feminino</label>
-            </div>
-            <div>
-              <input
-                type="radio"
-                id="naoInformar"
-                name="sexo"
-                value="naoInformar"
-                checked={sexo === 'naoInformar'}
-                onChange={(e) => setSexo(e.target.value)}
-              />
-              <label htmlFor="naoInformar">Prefiro não informar</label>
-            </div>
-          </div>
+          <input type="password" placeholder="Confirme sua Senha" value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
 
           <button onClick={handleCadastro}>Cadastrar</button>
         </div>
       </div>
     </section>
-        );
+  );
 }
 
-        export default Cadastro;
+export default Cadastro;

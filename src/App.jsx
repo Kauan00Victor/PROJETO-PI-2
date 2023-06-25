@@ -10,6 +10,7 @@ import Perfil from './pages/Perfil'
 import './App.css'
 import Favoritos from './pages/Favoritos'
 import CadastroForm from './pages/CadastroForm'
+import Jogo from './pages/Jogo'
 
 export default function App() {
   const { logado } = useContext(UserContext)
@@ -20,12 +21,13 @@ export default function App() {
         {logado ?
           <Route element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="Jogos" element={<Jogos />} />
+            <Route path="jogos" element={<Jogos />} />
+            <Route path="jogo/:id" element={<Jogo />} />
             <Route path="perfil/:id" element={<Perfil />} />
-            <Route path='Favoritos' element={<Favoritos />} />
+            <Route path='favoritos' element={<Favoritos />} />
           </Route>
           : <Route path="/" element={<Login />} />}
-          <Route path="/Cadastro" element={<CadastroForm />} />
+        <Route path="/cadastro" element={<CadastroForm />} />
         <Route path="*" element={<Erro404 />} />
       </Routes>
     </BrowserRouter>

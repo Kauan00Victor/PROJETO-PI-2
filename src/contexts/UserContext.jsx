@@ -1,29 +1,44 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import { login, logout } from '../services/AuthService'
 
 const UserContext = createContext({
   userId: null,
   logado: false,
-  handleLogin: () => { },
-  handleLogout: () => { },
+  handleLogin: () => {},
+  handleLogout: () => {},
 })
 
 export function UserContextProvider(props) {
+  const storedUserId = localStorage.getItem('userId')
+  const storedLogado = localStorage.getItem('logado')
 
-  const [currentUser, setCurrentUser] = useState({ userId: null, logado: true })
+  const [currentUser, setCurrentUser] = useState({
+    userId: storedUserId,
+    logado: storedLogado === 'true',
+  })
+
+  useEffect(() => {
+    if (!storedUserId) {
+      setCurrentUser({ userId: null, logado: true })
+    }
+  }, [storedUserId])
 
   async function handleLogin(email, senha) {
     try {
       const id = await login(email, senha)
       setCurrentUser({ userId: id, logado: true })
+      localStorage.setItem('userId', id)
+      localStorage.setItem('logado', 'true')
     } catch (error) {
-      throw Error(error.message)
+      throw new Error(error.message)
     }
   }
 
   async function handleLogout() {
     await logout()
     setCurrentUser({ userId: null, logado: false })
+    localStorage.removeItem('userId')
+    localStorage.setItem('logado', 'false')
   }
 
   const contexto = {

@@ -17,23 +17,23 @@ export default function NovoForm() {
   }
 
   return (<h1></h1>
-  /*
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label>Nome da Tarefa</label>
-          <input type="text" {...register("nome")} />
-        </div>
-        <div>
-          <label>Prioridade</label>
-          <select {...register("prioridade")}>
-            <option value="1">Urgente</option>
-            <option value="2">Importante</option>
-            <option value="3">Normal</option>
-          </select>
-        </div>
-        <button>Salvar</button>
-      </form>
-    </>*/
+    /*
+      <>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div>
+            <label>Nome da Tarefa</label>
+            <input type="text" {...register("nome")} />
+          </div>
+          <div>
+            <label>Prioridade</label>
+            <select {...register("prioridade")}>
+              <option value="1">Urgente</option>
+              <option value="2">Importante</option>
+              <option value="3">Normal</option>
+            </select>
+          </div>
+          <button>Salvar</button>
+        </form>
+      </>*/
   )
 }

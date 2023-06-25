@@ -7,15 +7,15 @@ export default function Login() {
   return (
     <section className="form-login">
       <div>
-        <img src={logo} id="logoLogin" alt="Logo da empresa"/>
-        </div>
-        <LoginForm />
-        <div>
+        <img src={logo} id="logoLogin" alt="Logo da empresa" />
+      </div>
+      <LoginForm />
+      <div>
         <ul>
           <NavLink to="/Cadastro">Cadastre-se</NavLink>
         </ul>
-        </div>
+      </div>
     </section>
-    
+
   )
 }

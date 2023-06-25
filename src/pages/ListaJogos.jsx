@@ -1,55 +1,37 @@
 import React, { useState } from 'react';
+import { useContext } from 'react'
+import UserContext from '../contexts/UserContext'
+import { Link } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
 import Card from 'react-bootstrap/Card';
 import './ListaJogos.css';
-
-import forza from '../img/FORZA.jpg';
-import forza1 from '../img/FORZA1.jpg';
-import street from '../img/STREET.jpg';
-import st from '../img/ST.jpg';
-import VALORANT from '../img/VALORANT.jpg';
+import { imagens } from '../components/Imagens';
 
 function ListaJogos() {
-  const cardsPerPage = 9; // Quantidade de cards por página
+  const cardsPerPage = 21; // Quantidade de cards por página
   const [currentPage, setCurrentPage] = useState(1);
+  const { userId } = useContext(UserContext) // Estado para verificar se o usuário está logado
+
   const cards = [
-    { image: forza, title: 'Card Title 1', text: 'Some quick example text 1' },
-    { image: forza1, title: 'Card Title 2', text: 'Some quick example text 2' },
-    { image: street, title: 'Card Title 3', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 4', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 5', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 6', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 7', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 8', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 9', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 10', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 11', text: 'Some quick example text 5' },
-    { image: forza, title: 'Card Title 12', text: 'Some quick example text 1' },
-    { image: forza1, title: 'Card Title 13', text: 'Some quick example text 2' },
-    { image: street, title: 'Card Title 14', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 15', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 16', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 17', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 18', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 19', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 20', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 21', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 22', text: 'Some quick example text 5' },
-    { image: forza, title: 'Card Title 23', text: 'Some quick example text 1' },
-    { image: forza1, title: 'Card Title 24', text: 'Some quick example text 2' },
-    { image: street, title: 'Card Title 25', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 26', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 27', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 28', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 29', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 30', text: 'Some quick example text 5' },
-    { image: street, title: 'Card Title 31', text: 'Some quick example text 3' },
-    { image: st, title: 'Card Title 32', text: 'Some quick example text 4' },
-    { image: VALORANT, title: 'Card Title 33', text: 'Some quick example text 5' },
+    { image: imagens.forza, alt:"Forza", id: 0, title: 'titulo jogo', description: 'Some quick example text 1' },
+    { image: imagens.forza2, alt:"Forza2",  id: 1, title: 'FORZAA', description: 'Some quick  1' },
+    { image: imagens.st, alt:"ST", id: 2, title: 'FIFAAAA', description: 'Some quick  1' },
+    { image: imagens.st2, alt:"ST2", id: 3, title: 'GTA V FODA D+', description: 'Some quick  1' },
+    { image: imagens.valorant, alt:"valorant", id: 4, title: 'vava', description: 'Some quick  1' },
   ];
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
+  };
+
+  const handleButtonClick = () => {
+    if (userId !== null) {
+      // O usuário está logado, prossiga 
+    } else {
+      // O usuário não está logado, exiba a mensagem de login
+      window.alert('Por favor, faça login para continuar');
+    }
   };
 
   const renderCards = () => {
@@ -62,8 +44,14 @@ function ListaJogos() {
         <Card.Img src={card.image} />
         <Card.Body>
           <Card.Title>{card.title}</Card.Title>
-          <Card.Text>{card.text}</Card.Text>
-          <button>Go.</button>
+          <Card.Text>{card.description}</Card.Text>
+          <Link to={`/jogo/${startIndex + index}`}>
+            {userId !== null ? (
+              <button onClick={() => handleButtonClick()}>Go!</button>
+            ) : (
+              <button disabled>Go!</button>
+            )}
+          </Link>
         </Card.Body>
       </Card>
     ));
@@ -90,6 +78,7 @@ function ListaJogos() {
 
   return (
     <div className="container">
+      <Pagination className="pagination">{renderPaginationItems()}</Pagination>
       <div className="column">
         <div className="cards-container">{renderCards()}</div>
       </div>
