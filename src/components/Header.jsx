@@ -9,8 +9,6 @@ export function Header() {
     <section className="Header">
       <form>
         <NavLink to="/"><img className='logo' src={logo} alt='logo' /></NavLink>
-        <input type="text" placeholder="Digite sua pesquisa..." />
-        <button type="submit">Pesquisar</button>
       </form>
     </section>
   )

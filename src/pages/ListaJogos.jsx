@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useContext } from 'react'
-import UserContext from '../contexts/UserContext'
+import { useContext } from 'react';
+import UserContext from '../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
 import Card from 'react-bootstrap/Card';
@@ -10,28 +10,23 @@ import { imagens } from '../components/Imagens';
 function ListaJogos() {
   const cardsPerPage = 21; // Quantidade de cards por página
   const [currentPage, setCurrentPage] = useState(1);
-  const { userId } = useContext(UserContext) // Estado para verificar se o usuário está logado
+  const { userId } = useContext(UserContext); // Estado para verificar se o usuário está logado
+
+  const handleGoButtonClick = () => {
+    window.alert("Disponivel somente para usuarios registrados, realize login ou cadastre-se para continuar!");
+  }
 
   const cards = [
-    { image: imagens.forza, alt:"Forza", id: 0, title: 'titulo jogo', description: 'Some quick example text 1' },
-    { image: imagens.forza2, alt:"Forza2",  id: 1, title: 'FORZAA', description: 'Some quick  1' },
-    { image: imagens.st, alt:"ST", id: 2, title: 'FIFAAAA', description: 'Some quick  1' },
-    { image: imagens.st2, alt:"ST2", id: 3, title: 'GTA V FODA D+', description: 'Some quick  1' },
-    { image: imagens.valorant, alt:"valorant", id: 4, title: 'vava', description: 'Some quick  1' },
+    { image: imagens.forza, alt: 'Forza', id: 0, title: 'Título do jogo', description: 'Algum texto de exemplo 1' },
+    { image: imagens.forza2, alt: 'Forza2', id: 1, title: 'FORZAA', description: 'Algum texto rápido 1' },
+    { image: imagens.st, alt: 'ST', id: 2, title: 'FIFAAAA', description: 'Algum texto rápido 1' },
+    { image: imagens.st2, alt: 'ST2', id: 3, title: 'GTA V FODA D+', description: 'Algum texto rápido 1' },
+    { image: imagens.valorant, alt: 'valorant', id: 4, title: 'vava', description: 'Algum texto rápido 1' },
   ];
 
-  const handlePageChange = (pageNumber) => {
+  const handlePageChange = (pageNumber) => {      //volta para o topo da pagina quando clicar em uma pagina 
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0);
-  };
-
-  const handleButtonClick = () => {
-    if (userId !== null) {
-      // O usuário está logado, prossiga 
-    } else {
-      // O usuário não está logado, exiba a mensagem de login
-      window.alert('Por favor, faça login para continuar');
-    }
   };
 
   const renderCards = () => {
@@ -45,13 +40,13 @@ function ListaJogos() {
         <Card.Body>
           <Card.Title>{card.title}</Card.Title>
           <Card.Text>{card.description}</Card.Text>
-          <Link to={`/jogo/${startIndex + index}`}>
-            {userId !== null ? (
-              <button onClick={() => handleButtonClick()}>Go!</button>
-            ) : (
-              <button disabled>Go!</button>
-            )}
-          </Link>
+          {userId !== null ? (
+            <Link to={`/jogo/${startIndex + index}`}>
+              <button>Ir!</button>
+            </Link>
+          ) : (
+            <button onClick={handleGoButtonClick}>Requer login</button>
+          )}
         </Card.Body>
       </Card>
     ));

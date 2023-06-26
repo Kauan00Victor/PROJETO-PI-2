@@ -7,8 +7,9 @@ export default function Jogos() {
   return (
     <section>
       <h1>Jogos</h1>
-      <NovoForm />
+      
       <ListaJogos />
     </section>
   )
 }
+/*<NovoForm /> */
