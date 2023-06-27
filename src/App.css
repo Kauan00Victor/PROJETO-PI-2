@@ -1,7 +1,18 @@
+
 #root {
   display: flex;  
   flex: 1;
   flex-direction: column;
+}
+.h1 {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #0085ff;
+  text-shadow: none;
+  text-decoration: none;
+  font-size: 5rem;
+  margin-top: 2rem ;
 }
 
 .erro {
@@ -10,62 +21,287 @@
   font-size: 1rem;
   color: red;
 }
-.game-store-info {
-  position: relative;
-  padding: 20px;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  color: white;
-  text-align: center;
+body {
+  margin: 0;
+  font-family: 'Asap', 'Poppins', sans-serif;
+  text-shadow: #000 0 0 10px;
+}
+
+.container1 {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  width: 100vw;
+  height: 100vh;
+  background: #111;
+  margin-bottom: 5rem;
+  
+  @media (min-width: 1024px) {
+    flex-direction: row;
+  }
 }
 
-.game-store-info::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url(https://i.pinimg.com/736x/3d/d1/2d/3dd12d40cf1d3fe82704a2a76f0ec6ef.jpg);
+.item {
+  position: relative;
+  flex: calc(100vw / 6) 1 1;
   background-size: cover;
-  background-position: center;
-  filter: blur(5px); /* Aplica o efeito de desfoque apenas ao plano de fundo */
-  z-index: -1;
+  overflow: hidden;
+  filter: saturate(90%);
+  transition: 1s;
 }
 
-.game-store-info h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  align-self: flex-end;
-}
-
-.game-store-info p {
-  font-size: 16px;
-  margin-bottom: 15px;
-  align-self: flex-end;
-}
-
-.game-store-info::after {
-  content: '';
+.item:before {
+  content: "";
   position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 50%;
-  height: 1px;
+  inset: 0;
+  background: linear-gradient(25deg, rgba(0,0,0,.9), rgba(0,0,0,0));
+}
+
+.item:not(:last-child) {
+  border-bottom: 1px solid #ccc;
+  animation: borderPulse 5s infinite;
+  
+  @media (min-width: 1024px) {
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+  }
+}
+
+.item:hover {
+  flex-basis: 40%;
+  filter: saturate(120%);
+  
+  @media (min-width: 1024px) {
+    flex-basis: 75%;
+  }
+  
+  .quote {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.item:nth-child(1) {
+  background-image: url("https://m.media-amazon.com/images/S/aplus-media-library-service-media/7d6a0df4-afd0-47d2-b825-4e51ab3e800f.__CR0,0,300,300_PT0_SX300_V1___.png");
+  background-position: 72% 35%;
+}
+
+.item:nth-child(2) {
+  background-image: url("https://criticalhits.com.br/wp-content/uploads/2013/01/v_trunk_800x600.jpg");
+  background-position: 60% 8%;
+}
+
+.item:nth-child(3) {
+  background-image: url("https://upload.wikimedia.org/wikipedia/pt/f/f5/Marvels_avengers_capa.jpg");
+  background-position: 52% 8%;
+}
+
+.item:nth-child(4) {
+  background-image: url("https://tm.ibxk.com.br/2020/12/08/08222339420006.jpg?ims=1200x675");
+  background-position: 45% 8%;
+}
+
+.item:nth-child(5) {
+  background-image: url("https://observatoriodegames.uol.com.br/wp-content/uploads/2022/09/Marvels-Spider-Man-2.jpg");
+  background-position: 45% 25%;
+}
+
+.item:nth-child(6) {
+  background-image: url("https://images.everyeye.it/img-artwork/assassin-s-creed-odyssey-v1-645737.jpg");
+  background-position: 65% 2%;
+}
+
+.quote {
+  position: absolute;
+  color: #fff;
+  bottom: 35%;
+  left: 5rem;
+  width: calc(100% - 10rem);
+  opacity: 0;
+  transition: 1s;
+  transform: translateX(50%);
+  
+  @media (min-width: 512px) {
+    left: 15%;
+    bottom: 35%;
+    width: 20vw;
+  }
+  
+  @media (min-width: 1024px) {
+    left: 15%;
+    bottom: 35%;
+    width: 30vw;
+  }
+  
+  p {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1.7rem;
+    font-size: 1.4rem;
+    font-style: italic;
+    
+    &:before, &:after {
+      position: absolute;
+      font-size: 5.5rem;
+      opacity: .6;
+    }
+    
+    &:before {
+      content: "“";
+      top: 4rem;
+      left: -2rem;
+      transform: translate(-100%, -100%);
+    }
+    
+    &:after {
+      content: "”";
+      bottom: 2rem;
+      right: -2rem;
+      transform: translate(100%, 100%);
+    }
+  }
+  
+  span {
+    position: absolute;
+    bottom: -2rem;
+    right: 0;
+    text-align: right;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transform: translate(4rem, 100%);
+    
+    &:before {
+      content: "—";
+      margin-right: .7rem;
+    }
+  }
+}
+
+@keyframes borderPulse{
+  0%, 100% { border-color: rgba(204, 204, 204, 1); }
+  25%, 75% { border-color: rgba(204, 204, 255, 0.9); }
+  50% { border-color: rgba(204, 204, 255, 0.5); }
+}
+
+.responsive-div {
+  display: flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.responsive-div img {
+  flex-shrink: 0; /* Impede que a imagem diminua além do seu tamanho original */
+  max-width: 50%;
+  height: auto;
+  margin-right: 20px;
+}
+
+.responsive-div p {
+  flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+  margin-bottom: 0;
 }
 
 @media (max-width: 768px) {
-  .game-store-info {
-    align-items: center;
-    text-align: center;
+  .responsive-div {
+    flex-wrap: wrap;
   }
 
-  .game-store-info h1,
-  .game-store-info p {
-    align-self: center;
+  .responsive-div img {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .responsive-div p {
+    max-width: 100%;
   }
 }
+.responsive-div1 {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.responsive-div1 img {
+  flex-shrink: 0; /* Impede que a imagem diminua além do seu tamanho original */
+  max-width: 50%;
+  height: auto;
+  margin-left: 20px;
+}
+
+.responsive-div1 p {
+  flex-grow: 1; /* Permite que o texto ocupe o espaço restante */
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .responsive-div1 {
+    flex-direction: column;
+  }
+
+  .responsive-div1 img {
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .responsive-div1 p {
+    max-width: 100%;
+  }
+}
+.gmap_canvas {
+  overflow: hidden;
+  background: none!important;
+  height: 90vh;
+  width: 100%; /* Ajuste a largura conforme necessário */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px; 
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.mapouter {
+  position: relative;
+  text-align: left; /* Alinhe o texto à esquerda */
+  height: 90vh;
+  width: 100%; /* Ajuste a largura conforme necessário */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Alinhe o conteúdo à esquerda */
+}
+.icons { 
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #000000;
+  width: 90vw;
+  }
+  .icone {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    text-decoration: underline;
+    color:#0085ff;
+    text-shadow: none;
+    text-decoration: none;
+    font-size: 5rem;
+  }
+  .imagemicons {
+    width: 10vh;
+    height: 10vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    margin: auto;
+  }
+  .alingicons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 6vh;
+  }
+
+
+
