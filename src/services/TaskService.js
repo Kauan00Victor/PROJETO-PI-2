@@ -1,9 +1,9 @@
 import { urlApi } from "./FirebaseConfig";
 
 // Função para obter a lista de jogos
-export async function listaJogos() {
+export async function listaJogos(userId) {
   try {
-    const response = await fetch(`${urlApi}/jogos.json`);
+    const response = await fetch(`${urlApi}/${userId}/jogos.json`);
     const data = await response.json();
 
     if (response.ok) {
@@ -18,9 +18,9 @@ export async function listaJogos() {
 }
 
 // Função para inserir um novo jogo
-export async function insereJogo(jogo) {
+export async function insereJogo(jogo, userId) {
   try {
-    const response = await fetch(`${urlApi}/jogos.json`, {
+    const response = await fetch(`${urlApi}/jogos/${userId}.json`, {
       method: "POST",
       body: JSON.stringify(jogo),
       headers: {

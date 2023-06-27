@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { getAuth, createUserWithEmailAndPassword, updateProfile,sendPasswordResetEmail, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { app } from './FirebaseConfig'
 
 const auth = getAuth(app)
@@ -29,6 +29,18 @@ export async function cadastrar(email, senha, nome) {
     });
 }
 
+export async function recoverPassword(email) {
+  return await sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Email de recuperação de senha enviado com sucesso
+      return true;
+    })
+    .catch((error) => {
+      // Tratar erros de recuperação de senha, se necessário
+      throw Error('Erro ao enviar email de recuperação de senha: ' + error.message);
+    });
+  }
+  
 export async function logout() {
   await signOut(auth);
 }

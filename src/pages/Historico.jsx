@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { listaJogos, removeJogo } from "../services/TaskService";
-import Jogo from './Jogo'
-export default function Favoritos() {
+import { useParams } from 'react-router-dom';
+
+
+
+
+export default function Historico() {
   const [jogos, setJogos] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
   useEffect(() => {
     async function carrega() {
       setLoading(true);
-      const data = await listaJogos();
+      const userId = { id }
+      const data = await listaJogos(userId);
       setJogos(data);
       setLoading(false);
     }
@@ -27,7 +33,7 @@ export default function Favoritos() {
         <ol>
           {jogos.map((jogo, key) => (
             <li key={key}>
-              {Jogo.title} - {Jogo.imagem}
+              {jogo.imagem} - {jogo.imagem}
               <button onClick={() => handleClick(jogo.key)}>Remover</button>
             </li>
           ))}
@@ -36,6 +42,7 @@ export default function Favoritos() {
     </>
   );
 }
+
 
 
 /*import { useEffect, useState } from "react"

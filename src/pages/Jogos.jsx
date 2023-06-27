@@ -7,7 +7,6 @@ export default function Jogos() {
   return (
     <section>
       <h1>Jogos</h1>
-      
       <ListaJogos />
     </section>
   )

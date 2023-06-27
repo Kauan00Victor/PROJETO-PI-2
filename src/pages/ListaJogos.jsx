@@ -41,6 +41,7 @@ function ListaJogos() {
           <Card.Title>{card.title}</Card.Title>
           <Card.Text>{card.description}</Card.Text>
           {userId !== null ? (
+            
             <Link to={`/jogo/${startIndex + index}`}>
               <button>Ir!</button>
             </Link>

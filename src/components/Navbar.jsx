@@ -17,7 +17,7 @@ export default function Navbar() {
       <ul>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/Jogos">Jogos</NavLink></li>
-        <li><NavLink to="/Favoritos">Favoritos</NavLink></li>
+        <li><NavLink to="/Historico">Historico</NavLink></li>
         <li><NavLink to={`/perfil/${userId}`}>Perfil</NavLink></li>
         {
           userId !== null ?

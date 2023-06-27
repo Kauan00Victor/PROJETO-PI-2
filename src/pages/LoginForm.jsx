@@ -2,9 +2,10 @@ import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
+import { recoverPassword } from '../services/AuthService'
 
 export default function LoginForm(props) {
-  const { register, handleSubmit, formState: { errors } } = useForm()
+  const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm()
   const navigate = useNavigate()
   const { handleLogin } = useContext(UserContext)
   const [errorLogin, setErrorLogin] = useState("")
@@ -42,6 +43,16 @@ export default function LoginForm(props) {
     }
   }
 
+  const handleRecoverPassword = async () => {
+    const email = watch("email");
+    try {
+      await recoverPassword(email);
+      // Tratar recuperação de senha bem-sucedida, se necessário
+    } catch (error) {
+      // Tratar erros de recuperação de senha, se necessário
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {errorLogin && <p className="erro">{errorLogin}</p>}
@@ -55,6 +66,11 @@ export default function LoginForm(props) {
       </div>
       <div id="botao">
         <button>Entrar</button>
+      </div>
+      <div>
+        <ul>
+          <li onClick={handleRecoverPassword}>Recuperar Senha</li>
+        </ul>
       </div>
     </form>
   )

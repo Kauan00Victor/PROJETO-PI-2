@@ -5,7 +5,7 @@ import { insereJogo } from '../services/TaskService';
 import { imagens } from '../components/Imagens';
 import './Jogo.css';
 
-const Jogo = () => {
+const Jogo = ({ userId }) => {
   const { id } = useParams();
   const jogos = [
     {
@@ -41,12 +41,15 @@ const Jogo = () => {
         throw new Error('Jogo não encontrado');
       }
 
-      await insereJogo({
-        titulo: jogo.title,
-        img: jogo.imagem,
-      });
-
-      navigate('/Favoritos');
+      await insereJogo(
+        {
+          titulo: jogo.title,
+          img: jogo.imagem,
+        },
+        userId
+      );
+      
+      navigate('/Historico');
     } catch (error) {
       console.log(error.message);
     }

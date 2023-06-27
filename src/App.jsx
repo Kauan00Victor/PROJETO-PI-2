@@ -8,7 +8,7 @@ import Login from './pages/Login'
 import Jogos from './pages/Jogos'
 import Perfil from './pages/Perfil'
 import './App.css'
-import Favoritos from './pages/Favoritos'
+import Historico from './pages/Historico'
 import CadastroForm from './pages/CadastroForm'
 import Jogo from './pages/Jogo'
 
@@ -24,7 +24,7 @@ export default function App() {
             <Route path="jogos" element={<Jogos />} />
             <Route path="jogo/:id" element={<Jogo />} />
             <Route path="perfil/:id" element={<Perfil />} />
-            <Route path='favoritos' element={<Favoritos />} />
+            <Route path='Historico' element={<Historico />} />
           </Route>
           : <Route path="/" element={<Login />} />}
         <Route path="/cadastro" element={<CadastroForm />} />
