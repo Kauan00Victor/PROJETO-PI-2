@@ -47,9 +47,9 @@ export default function LoginForm(props) {
     const email = watch("email");
     try {
       await recoverPassword(email);
-      // Tratar recuperação de senha bem-sucedida, se necessário
+      window.alert("Redefinição de senha enviada por E-mail")
     } catch (error) {
-      // Tratar erros de recuperação de senha, se necessário
+      Window.alert
     }
   };
 
