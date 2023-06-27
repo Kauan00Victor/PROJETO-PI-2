@@ -9,6 +9,7 @@ export default function LoginForm(props) {
   const navigate = useNavigate()
   const { handleLogin } = useContext(UserContext)
   const [errorLogin, setErrorLogin] = useState("")
+  const [errorRecover, setErrorRecover] = useState("")
 
   const validaEmail = {
     required: {
@@ -45,11 +46,16 @@ export default function LoginForm(props) {
 
   const handleRecoverPassword = async () => {
     const email = watch("email");
+    if (!email) {
+      setErrorRecover("Digite um email válido.");
+      return;
+    }
+
     try {
       await recoverPassword(email);
       window.alert("Redefinição de senha enviada por E-mail")
     } catch (error) {
-      Window.alert
+      setErrorRecover("Email não encontrado.");
     }
   };
 
@@ -71,6 +77,7 @@ export default function LoginForm(props) {
         <ul>
           <li onClick={handleRecoverPassword}>Recuperar Senha</li>
         </ul>
+        {errorRecover && <p className="erro">{errorRecover}</p>}
       </div>
     </form>
   )
