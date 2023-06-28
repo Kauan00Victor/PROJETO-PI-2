@@ -20,9 +20,8 @@ export async function listaJogos(userId) {
 }
 
 // Função para inserir um novo jogo
-export async function insereJogo(jogo) {
+export async function insereJogo(jogo, userId) {
   try {
-    const { userId } = useContext(UserContext); // Obtenha o userId do contexto
     const response = await fetch(`${urlApi}/jogos/${userId}.json`, {
       method: 'POST',
       body: JSON.stringify(jogo),

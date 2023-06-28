@@ -1,25 +1,28 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { listaJogos, removeJogo } from "../services/TaskService";
 import { useParams } from 'react-router-dom';
-
-
-
+import { UserContext } from '../contexts/UserContext';
 
 export default function Historico() {
   const [jogos, setJogos] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
+  const { userId } = useContext(UserContext);
 
   useEffect(() => {
-    async function carrega() {
+    async function carregaHistorico() {
       setLoading(true);
-      const userId = { id }
-      const data = await listaJogos(userId);
-      setJogos(data);
-      setLoading(false);
+      try {
+        const data = await listaJogos(userId); // Busca o histórico de jogos usando o userId
+        setJogos(data);
+      } catch (error) {
+        console.error('Erro ao carregar o histórico de jogos:', error);
+      } finally {
+        setLoading(false);
+      }
     }
-    carrega();
-  }, []);
+    carregaHistorico();
+  }, [userId]);
 
   async function handleClick(key) {
     await removeJogo(key);
