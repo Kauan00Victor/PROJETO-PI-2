@@ -74,7 +74,7 @@ export default function LoginForm(props) {
         <button>Entrar</button>
       </div>
       <div>
-        <ul>
+        <ul className='ul'>
           <li onClick={handleRecoverPassword}>Recuperar Senha</li>
         </ul>
         {errorRecover && <p className="erro">{errorRecover}</p>}
