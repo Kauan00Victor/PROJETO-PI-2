@@ -47,8 +47,12 @@ export default function Perfil() {
     <section className="userperfil">
       <h1>Perfil</h1>
       <p>UserId {id}</p>
+<<<<<<< HEAD
       <p>Nome de usuário: {username}</p>
       <ul>
+=======
+      <ul className="ul">
+>>>>>>> 1adcdc3ba13a10a465d0c088f17020f606240c6e
         <li onClick={handleTogglePasswordReset}>Redefinir senha</li>
       </ul>
       {showPasswordReset && (

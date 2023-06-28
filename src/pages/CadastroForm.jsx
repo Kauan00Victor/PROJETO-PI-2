@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { cadastrar } from '../services/AuthService';
 import './Login.css';
 import logo from '../img/logoLogin.png';
@@ -76,6 +76,7 @@ function Cadastro() {
 
           <button onClick={handleCadastro}>Cadastrar</button>
         </div>
+        <NavLink to="/">Voltar</NavLink>
       </div>
     </section>
   );
