@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { updateUserPassword } from "../services/AuthService";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import "./Perfil.css"
+import "./Perfil.css";
 
 export default function Perfil() {
   const { id } = useParams();
@@ -47,12 +47,8 @@ export default function Perfil() {
     <section className="userperfil">
       <h1>Perfil</h1>
       <p>UserId {id}</p>
-<<<<<<< HEAD
-      <p>Nome de usuário: {username}</p>
-      <ul>
-=======
+      <p>Nome de Usuario: {username}</p>
       <ul className="ul">
->>>>>>> 1adcdc3ba13a10a465d0c088f17020f606240c6e
         <li onClick={handleTogglePasswordReset}>Redefinir senha</li>
       </ul>
       {showPasswordReset && (
@@ -62,8 +58,11 @@ export default function Perfil() {
             placeholder="Nova Senha"
             type="password"
             value={newPassword}
-            onChange={handlePasswordChange} />
-          <div id="buttonSenha"><button onClick={handlePasswordReset}>Confirmar</button></div>
+            onChange={handlePasswordChange}
+          />
+          <div id="buttonSenha">
+            <button onClick={handlePasswordReset}>Confirmar</button>
+          </div>
           {passwordResetError && <p>{passwordResetError}</p>}
           {passwordResetSuccess && <p>Senha atualizada com sucesso!</p>}
         </div>
