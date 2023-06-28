@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { updateUserPassword } from "../services/AuthService";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import "./Perfil.css"
 
 export default function Perfil() {
   const { id } = useParams();
@@ -8,6 +10,18 @@ export default function Perfil() {
   const [newPassword, setNewPassword] = useState("");
   const [passwordResetError, setPasswordResetError] = useState(null);
   const [passwordResetSuccess, setPasswordResetSuccess] = useState(false);
+  const [username, setUsername] = useState("");
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUsername(user.displayName);
+      }
+    });
+
+    return () => unsubscribe();
+  }, [auth]);
 
   const handleTogglePasswordReset = () => {
     setShowPasswordReset(!showPasswordReset);
@@ -19,35 +33,33 @@ export default function Perfil() {
 
   const handlePasswordReset = async () => {
     try {
-      // Chame a função de atualização de senha com a nova senha
       await updateUserPassword(newPassword);
       setPasswordResetError(null);
       setPasswordResetSuccess(true);
       setNewPassword("");
     } catch (error) {
-      // Trate os erros de atualização de senha, se necessário
       setPasswordResetError(error.message);
       setPasswordResetSuccess(false);
     }
   };
 
   return (
-    <section>
+    <section className="userperfil">
       <h1>Perfil</h1>
       <p>UserId {id}</p>
+      <p>Nome de usuário: {username}</p>
       <ul>
         <li onClick={handleTogglePasswordReset}>Redefinir senha</li>
       </ul>
       {showPasswordReset && (
         <div>
-          <label htmlFor="password-input">Nova senha:</label>
           <input
             id="password-input"
+            placeholder="Nova Senha"
             type="password"
             value={newPassword}
-            onChange={handlePasswordChange}
-          />
-          <button onClick={handlePasswordReset}>Confirmar</button>
+            onChange={handlePasswordChange} />
+          <div id="buttonSenha"><button onClick={handlePasswordReset}>Confirmar</button></div>
           {passwordResetError && <p>{passwordResetError}</p>}
           {passwordResetSuccess && <p>Senha atualizada com sucesso!</p>}
         </div>

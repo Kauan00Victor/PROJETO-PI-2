@@ -51,17 +51,9 @@ export default function Home() {
       </Carousel>
       <div className="alingicons">
         <div className="icons">
-          <NavLink to="/" className="icone">
-            <IoHome/>
-              <h1>Home</h1>
-          </NavLink>
-          <NavLink to="/" className="icone">
-            <IoInformationCircle />
-              <h1>Sobre</h1>
-          </NavLink>
           <NavLink to="/jogos" className="icone">
             <IoGameController />
-              <h1>Jogos</h1>
+            <h1>Jogos</h1>
           </NavLink>
         </div>
       </div>

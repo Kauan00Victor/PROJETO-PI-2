@@ -10,7 +10,7 @@ function Cadastro() {
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const navigate = useNavigate(); // Adicionado
+  const navigate = useNavigate();
 
   const handleCadastro = () => {
     // Verificar se os campos estão preenchidos
@@ -46,7 +46,7 @@ function Cadastro() {
 
         // Exibir uma mensagem de sucesso ao usuário
         alert('Usuário cadastrado com sucesso!');
-        
+
         // Redirecionar para a página de login
         navigate("/");
       })

@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react'
 import { login, logout } from '../services/AuthService'
 
-const UserContext = createContext({
+export const UserContext = createContext({
   userId: null,
   logado: false,
   handleLogin: () => {},

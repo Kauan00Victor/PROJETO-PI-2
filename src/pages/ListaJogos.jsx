@@ -37,7 +37,7 @@ function ListaJogos() {
   ];
 
 
-  const handlePageChange = (pageNumber) => {      //volta para o topo da pagina quando clicar em uma pagina 
+  const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0);
   };
