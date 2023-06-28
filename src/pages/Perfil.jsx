@@ -58,8 +58,7 @@ export default function Perfil() {
             placeholder="Nova Senha"
             type="password"
             value={newPassword}
-            onChange={handlePasswordChange}
-          />
+            onChange={handlePasswordChange} />
           <div id="buttonSenha">
             <button onClick={handlePasswordReset}>Confirmar</button>
           </div>
