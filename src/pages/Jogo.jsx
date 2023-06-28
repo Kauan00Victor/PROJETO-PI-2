@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { insereJogo } from '../services/TaskService';
 import { useContext } from 'react'
 import UserContext from '../contexts/UserContext'
@@ -138,8 +138,6 @@ const Jogo = () => {
     },
   ];
 
-  const navigate = useNavigate();
-
   const onSubmit = async () => {
     try {
       const jogo = jogos.find((jogo) => jogo.id === Number(id));
@@ -155,8 +153,7 @@ const Jogo = () => {
         },
         userId
       );
-      
-      navigate('/Historico');
+      window.alert('Download concluído');
     } catch (error) {
       console.log(error.message);
     }
@@ -170,7 +167,6 @@ const Jogo = () => {
 
   return (
     <div className="DescriptionGame">
-      <h1>Detalhes do Jogo {id}</h1>
       <div>
         <img className="imgJogo" src={jogo.imagem} alt={jogo.title} />
         <h2>{jogo.title}</h2>

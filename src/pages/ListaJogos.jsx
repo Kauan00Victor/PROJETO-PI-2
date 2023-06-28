@@ -3,8 +3,9 @@ import UserContext from '../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
 import Card from 'react-bootstrap/Card';
-import './ListaJogos.css';
 import { imagens } from '../components/Imagens';
+import './ListaJogos.css';
+
 
 function ListaJogos() {
   const cardsPerPage = 6; // Quantidade de cards por página

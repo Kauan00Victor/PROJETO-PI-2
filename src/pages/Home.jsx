@@ -1,10 +1,11 @@
 import Carousel from 'react-bootstrap/Carousel';
 import React from 'react';
-import '../App.css';
-import { FaArrowDown } from 'react-icons/fa'
-import { IoGameController, IoInformationCircle, IoHome } from "react-icons/io5";
-import { imagens } from '../components/Imagens'
 import { NavLink } from 'react-router-dom';
+import { FaArrowDown } from 'react-icons/fa'
+import { IoGameController } from "react-icons/io5";
+import { imagens } from '../components/Imagens'
+import '../App.css';
+
 
 
 export default function Home() {

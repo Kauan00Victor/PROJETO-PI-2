@@ -1,16 +1,18 @@
 import { urlApi } from "./FirebaseConfig";
-import { useContext } from 'react';
-import { UserContext } from '../contexts/UserContext';
 
 // Função para obter a lista de jogos
 export async function listaJogos(userId) {
   try {
-    const response = await fetch(`${urlApi}/${userId}/jogos.json`);
+    const response = await fetch(`${urlApi}/jogos/${userId}.json`);
     const data = await response.json();
 
     if (response.ok) {
-      const jogos = Object.keys(data).map((key) => ({ key, ...data[key] }));
-      return jogos;
+      if (data) {
+        const jogos = Object.keys(data).map((key) => ({ key, ...data[key] }));
+        return jogos;
+      } else {
+        return [];
+      }
     } else {
       throw new Error("Erro ao obter a lista de jogos");
     }
@@ -39,9 +41,9 @@ export async function insereJogo(jogo, userId) {
 }
 
 // Função para remover um jogo
-export async function removeJogo(key) {
+export async function removeJogo(key, userId) {
   try {
-    const response = await fetch(`${urlApi}/jogos/${key}.json`, {
+    const response = await fetch(`${urlApi}/jogos/${userId}/${key}.json`, {
       method: "DELETE",
     });
 
