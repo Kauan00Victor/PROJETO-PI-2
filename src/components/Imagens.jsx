@@ -28,6 +28,7 @@ import mortalkombat from '../img/mortalkombat.jpg'
 import nba from '../img/nba.jpg'
 import needforspeed from '../img/needforspeed.png'
 import pes from '../img/pes.jpg'
+import raimbow from '../img/raimbow.png'
  
 export const imagens = {
   forza,
@@ -60,4 +61,5 @@ export const imagens = {
   nba,
   needforspeed,
   pes,
+  raimbow,
 };
