@@ -11,6 +11,8 @@ function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
+  const [sucessoCadastro, setSucessoCadastro] = useState(false);
+
 
   const handleCadastro = () => {
     // Verificar se os campos estão preenchidos
@@ -45,16 +47,19 @@ function Cadastro() {
         console.log('UID do usuário:', uid);
 
         // Exibir uma mensagem de sucesso ao usuário
-        alert('Usuário cadastrado com sucesso!');
+        setSucessoCadastro(true);
 
         // Redirecionar para a página de login
         navigate("/");
       })
       .catch((error) => {
         console.error('Erro ao cadastrar usuário:', error);
-        // Tratar o erro e exibir uma mensagem adequada para o usuário
-        setErrorMessage('Erro ao cadastrar usuário. Por favor, tente novamente.');
-      });
+        if (error.message.includes('O email já está em uso.')) {
+          setErrorMessage('O email informado já está em uso.');
+        } else {
+          setErrorMessage('Erro ao cadastrar usuário. Por favor, tente novamente.');
+        }
+      });      
   };
 
   return (
@@ -65,15 +70,12 @@ function Cadastro() {
           <h1>Cadastro</h1>
 
           {errorMessage && <p className="error-message">{errorMessage}</p>}
+          {sucessoCadastro && <p className="success-message">Usuário cadastrado com sucesso!</p>}
 
           <input type="text" id="nome" placeholder="Nome de Usuario" value={nome} onChange={(e) => setNome(e.target.value)} />
-
           <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
-
           <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
-
           <input type="password" placeholder="Confirme sua Senha" value={confirmarSenha} onChange={(e) => setConfirmarSenha(e.target.value)} />
-
           <button onClick={handleCadastro}>Cadastrar</button>
         </div>
         <NavLink to="/">Voltar</NavLink>

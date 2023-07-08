@@ -16,18 +16,23 @@ export async function login(email, senha) {
 }
 
 export async function cadastrar(email, senha, nome) {
-  return await createUserWithEmailAndPassword(auth, email, senha)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      // Atualizar o perfil do usuário com o nome fornecido
-      return updateProfile(user, { displayName: nome })
-        .then(() => user.uid);
-    })
-    .catch((error) => {
-      // Tratar erros de cadastro, se necessário
-      throw Error('Erro ao cadastrar usuário: ' + error.message);
-    });
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+    const user = userCredential.user;
+
+    // Atualizar o perfil do usuário com o nome fornecido
+    await updateProfile(user, { displayName: nome });
+
+    return user.uid;
+  } catch (error) {
+    if (error.code === 'auth/email-already-in-use') {
+      throw new Error('O email já está em uso.');
+    } else {
+      throw new Error('Erro ao cadastrar usuário: ' + error.message);
+    }
+  }
 }
+
 
 export async function recoverPassword(email) {
   return await sendPasswordResetEmail(auth, email)
