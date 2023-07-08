@@ -1,7 +1,7 @@
 import React from 'react';
+import { useContext, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import { insereJogo } from '../services/TaskService';
-import { useContext } from 'react'
 import UserContext from '../contexts/UserContext'
 import { imagens } from '../components/Imagens';
 import './Jogo.css';
@@ -9,6 +9,7 @@ import './Jogo.css';
 const Jogo = () => {
   const { id } = useParams();
   const { userId } = useContext(UserContext);
+  const [downloadConcluido, setDownloadConcluido] = useState(false);
   const jogos = [
     {
       id: 0,
@@ -153,7 +154,7 @@ const Jogo = () => {
         },
         userId
       );
-      window.alert('Download concluído');
+      setDownloadConcluido(true);
     } catch (error) {
       console.log(error.message);
     }
@@ -174,6 +175,7 @@ const Jogo = () => {
         <button type="button" onClick={onSubmit}>
           Download
         </button>
+        {downloadConcluido && <p>Download concluído</p>}
       </div>
     </div>
   );

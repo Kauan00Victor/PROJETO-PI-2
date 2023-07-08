@@ -11,8 +11,6 @@ function Cadastro() {
   const [confirmarSenha, setConfirmarSenha] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
-  const [sucessoCadastro, setSucessoCadastro] = useState(false);
-
 
   const handleCadastro = () => {
     // Verificar se os campos estão preenchidos
@@ -46,11 +44,8 @@ function Cadastro() {
         console.log('Usuário cadastrado com sucesso!');
         console.log('UID do usuário:', uid);
 
-        // Exibir uma mensagem de sucesso ao usuário
-        setSucessoCadastro(true);
-
-        // Redirecionar para a página de login
-        navigate("/");
+        // Redirecionar para a página de login com a mensagem de sucesso
+        navigate("/", { state: { sucessoCadastro: true } });
       })
       .catch((error) => {
         console.error('Erro ao cadastrar usuário:', error);
@@ -59,7 +54,7 @@ function Cadastro() {
         } else {
           setErrorMessage('Erro ao cadastrar usuário. Por favor, tente novamente.');
         }
-      });      
+      });
   };
 
   return (
@@ -68,10 +63,7 @@ function Cadastro() {
         <img src={logo} id="logoLogin" alt="Logo da empresa" />
         <div className="cadastro">
           <h1>Cadastro</h1>
-
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          {sucessoCadastro && <p className="success-message">Usuário cadastrado com sucesso!</p>}
-
           <input type="text" id="nome" placeholder="Nome de Usuario" value={nome} onChange={(e) => setNome(e.target.value)} />
           <input type="email" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} />
           <input type="password" placeholder="Senha" value={senha} onChange={(e) => setSenha(e.target.value)} />

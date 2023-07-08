@@ -1,15 +1,18 @@
 import { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import UserContext from '../contexts/UserContext'
 import { recoverPassword } from '../services/AuthService'
 
 export default function LoginForm(props) {
   const { register, handleSubmit, formState: { errors }, setValue, watch } = useForm()
   const navigate = useNavigate()
+  const location = useLocation()
   const { handleLogin } = useContext(UserContext)
   const [errorLogin, setErrorLogin] = useState("")
   const [errorRecover, setErrorRecover] = useState("")
+  const [resetEmailSent, setResetEmailSent] = useState(false)
+  const sucessoCadastro = location?.state?.sucessoCadastro || false;
 
   const validaEmail = {
     required: {
@@ -53,20 +56,21 @@ export default function LoginForm(props) {
 
     try {
       await recoverPassword(email);
-      window.alert("Redefinição de senha enviada por E-mail")
+      setResetEmailSent(true);
     } catch (error) {
       setErrorRecover("Email não encontrado.");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="formLogin" onSubmit={handleSubmit(onSubmit)}>
       {errorLogin && <p className="erro">{errorLogin}</p>}
-      <div>
+      {sucessoCadastro && <p>Usuário cadastrado com sucesso!</p>}
+      <div className="formLogin">
         <input type="email" id="email" placeholder="E-mail" {...register("email", validaEmail)} />
         {errors.email && <p className="erro">{errors.email.message}</p>}
       </div>
-      <div>
+      <div className="formLogin">
         <input type="password" id="senha" placeholder="Senha" {...register("senha", validaSenha)} />
         {errors.senha && <p className="erro">{errors.senha.message}</p>}
       </div>
@@ -77,7 +81,8 @@ export default function LoginForm(props) {
         <ul className='ul'>
           <li onClick={handleRecoverPassword}>Recuperar Senha</li>
         </ul>
-        {errorRecover && <p className="erro">{errorRecover}</p>}
+        {errorRecover && <p>{errorRecover}</p>}
+        {resetEmailSent && <p>Redefinição de senha enviada por E-mail</p>}
       </div>
     </form>
   )
