@@ -8,7 +8,14 @@ export async function listaJogos(userId) {
 
     if (response.ok) {
       if (data) {
-        const jogos = Object.keys(data).map((key) => ({ key, ...data[key] }));
+        const jogos = Object.keys(data).map((key) => {
+          const jogo = data[key];
+          return {
+            key,
+            titulo: jogo.titulo,
+            imagem: jogo.img
+          };
+        });
         return jogos;
       } else {
         return [];
