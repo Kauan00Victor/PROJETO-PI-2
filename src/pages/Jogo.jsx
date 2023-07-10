@@ -1,15 +1,17 @@
-import React from 'react';
-import { useContext, useState } from 'react'
+// Jogo.js
+
+import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { insereJogo } from '../services/TaskService';
-import UserContext from '../contexts/UserContext'
+import { UserContext } from '../contexts/UserContext'; 
 import { imagens } from '../components/Imagens';
 import './Jogo.css';
 
 const Jogo = () => {
   const { id } = useParams();
-  const { userId } = useContext(UserContext);
+  const { userId, userHistory, updateUserHistory } = useContext(UserContext);
   const [downloadConcluido, setDownloadConcluido] = useState(false);
+  const isDownloaded = userHistory.some((game) => game.id === Number(id)); 
   const jogos = [
     {
       id: 0,
@@ -147,6 +149,10 @@ const Jogo = () => {
         throw new Error('Jogo não encontrado');
       }
 
+      if (isDownloaded) {
+        throw new Error('Jogo já baixado');
+      }
+
       await insereJogo(
         {
           titulo: jogo.title,
@@ -154,6 +160,7 @@ const Jogo = () => {
         },
         userId
       );
+      updateUserHistory(jogo); // Update user history with the downloaded game
       setDownloadConcluido(true);
     } catch (error) {
       console.log(error.message);
@@ -172,8 +179,8 @@ const Jogo = () => {
         <img className="imgJogo" src={jogo.imagem} alt={jogo.title} />
         <h2>{jogo.title}</h2>
         <p>{jogo.description}</p>
-        <button type="button" onClick={onSubmit}>
-          Download
+        <button type="button" onClick={onSubmit} disabled={isDownloaded}>
+          {isDownloaded ? 'Jogo Baixado' : 'Download'}
         </button>
         {downloadConcluido && <p>Download concluído</p>}
       </div>
