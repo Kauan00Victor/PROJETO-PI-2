@@ -1,4 +1,4 @@
-import React, { useState,useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import UserContext from '../contexts/UserContext';
 import { Link } from 'react-router-dom';
 import Pagination from 'react-bootstrap/Pagination';
@@ -6,15 +6,20 @@ import Card from 'react-bootstrap/Card';
 import { imagens } from '../components/Imagens';
 import './ListaJogos.css';
 
-
 function ListaJogos() {
   const cardsPerPage = 6; // Quantidade de cards por página
   const [currentPage, setCurrentPage] = useState(1);
   const { userId } = useContext(UserContext); // Estado para verificar se o usuário está logado
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleGoButtonClick = () => {
-    window.alert("Disponivel somente para usuarios registrados, realize login ou cadastre-se para continuar!");
-  }
+    setShowAlert(true),
+    window.scrollTo(0, 0);
+  };
+
+  const handleCloseAlert = () => {
+    setShowAlert(false);
+  };
 
   const cards = [
     { image: imagens.gta, alt: 'gta', id: 0, title: 'GTA:', description: 'GTA, abreviação de Grand Theft Auto, é uma famosa série de jogos de mundo aberto desenvolvida pela Rockstar Games. Os jogos da série GTA são conhecidos por sua liberdade de exploração, narrativas envolventes e gameplay não linear. Os jogadores podem assumir o papel de personagens criminosos e mergulhar em vastas cidades virtuais, onde podem completar missões, realizar atividades paralelas, dirigir veículos, interagir com personagens e experimentar ação intensa.' },
@@ -37,7 +42,6 @@ function ListaJogos() {
     { image: imagens.nba, alt: 'NBA 2K23', id: 18, title: 'NBA 2K23', description: '"NBA 2K23" é um jogo de simulação de basquete que oferece uma experiência autêntica da NBA. Os jogadores podem controlar times da NBA, criar seus próprios jogadores e participar de partidas emocionantes com gráficos realistas e mecânicas de jogo sofisticadas.' },
   ];
 
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo(0, 0);
@@ -55,7 +59,6 @@ function ListaJogos() {
           <Card.Title>{card.title}</Card.Title>
           <Card.Text>{card.description}</Card.Text>
           {userId !== null ? (
-            
             <Link to={`/jogo/${startIndex + index}`}>
               <button>Go!</button>
             </Link>
@@ -88,6 +91,14 @@ function ListaJogos() {
 
   return (
     <div className="container">
+      {showAlert && (
+        <div className="alert">
+          Disponível somente para usuários registrados. Realize login ou cadastre-se para continuar!
+          <button className="close-button" onClick={handleCloseAlert}>
+            Fechar
+          </button>
+        </div>
+      )}
       <Pagination className="pagination">{renderPaginationItems()}</Pagination>
       <div className="column">
         <div className="cards-container">{renderCards()}</div>
