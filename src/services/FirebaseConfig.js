@@ -1,16 +1,17 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyALhkM6TaZQkPWlle7EsxlKlPyzApqMSws",
-  authDomain: "projeto-pi-c0f3a.firebaseapp.com",
-  databaseURL: "https://projeto-pi-c0f3a-default-rtdb.firebaseio.com",
-  projectId: "projeto-pi-c0f3a",
-  storageBucket: "projeto-pi-c0f3a.appspot.com",
-  messagingSenderId: "1019097696241",
-  appId: "1:1019097696241:web:3093c57b88b61658fea650"
+  apiKey: "AIzaSyDjJeYx8t23hMOVZpKUZ1w55bmSLiUJPtY",
+  authDomain: "back-front-react1-c707b.firebaseapp.com",
+  databaseURL: "https://back-front-react1-c707b-default-rtdb.firebaseio.com",
+  projectId: "back-front-react1-c707b",
+  storageBucket: "back-front-react1-c707b.appspot.com",
+  messagingSenderId: "937088654822",
+  appId: "1:937088654822:web:7992aedb74c6405de18a27",
+  measurementId: "G-2DP6F0DX7G"
 };
 
 const app = initializeApp(firebaseConfig);
-const urlApi = "https://projeto-pi-c0f3a-default-rtdb.firebaseio.com/"
+const urlApi = "https://back-front-react1-c707b-default-rtdb.firebaseio.com/"
 
 export { app, urlApi}

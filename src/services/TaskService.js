@@ -32,6 +32,29 @@ export async function listaJogos(userId) {
 export async function insereJogo(jogo, userId) {
   try {
     const response = await fetch(`${urlApi}/jogos/${userId}.json`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Erro ao obter os jogos do usuário');
+    }
+
+    const data = await response.json();
+
+    if (data) {
+      const existingJogo = Object.values(data).find(
+        (j) => j.titulo === jogo.titulo
+      );
+
+      if (existingJogo) {
+        throw new Error('Esse jogo já foi baixado');
+      }
+    }
+
+    await fetch(`${urlApi}/jogos/${userId}.json`, {
       method: 'POST',
       body: JSON.stringify(jogo),
       headers: {
@@ -39,13 +62,11 @@ export async function insereJogo(jogo, userId) {
       },
     });
 
-    if (!response.ok) {
-      throw new Error('Erro ao inserir o jogo');
-    }
   } catch (error) {
     throw new Error('Erro ao inserir o jogo: ' + error.message);
   }
 }
+
 
 // Função para remover um jogo
 export async function removeJogo(key, userId) {

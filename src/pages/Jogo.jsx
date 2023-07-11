@@ -1,5 +1,3 @@
-// Jogo.js
-
 import React, { useContext, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { insereJogo } from '../services/TaskService';
@@ -11,6 +9,8 @@ const Jogo = () => {
   const { id } = useParams();
   const { userId, userHistory, updateUserHistory } = useContext(UserContext);
   const [downloadConcluido, setDownloadConcluido] = useState(false);
+  const [erro, setErro] = useState(null);
+
   const isDownloaded = userHistory.some((game) => game.id === Number(id)); 
   const jogos = [
     {
@@ -149,21 +149,21 @@ const Jogo = () => {
         throw new Error('Jogo não encontrado');
       }
 
-      if (isDownloaded) {
-        throw new Error('Jogo já baixado');
-      }
-
-      await insereJogo(
+      const response = await insereJogo(
         {
           titulo: jogo.title,
           img: jogo.imagem,
         },
         userId
       );
-      updateUserHistory(jogo); // Update user history with the downloaded game
+
+      if (response === 'success') {
+        updateUserHistory(jogo);
+        setErro(null); 
+      }
       setDownloadConcluido(true);
     } catch (error) {
-      console.log(error.message);
+      setErro(error.message); 
     }
   };
 
@@ -183,6 +183,7 @@ const Jogo = () => {
           {isDownloaded ? 'Jogo Baixado' : 'Download'}
         </button>
         {downloadConcluido && <p>Download concluído</p>}
+        {erro && <p>{erro}</p>}
       </div>
     </div>
   );
