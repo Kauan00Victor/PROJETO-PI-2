@@ -11,12 +11,16 @@ export default function Perfil() {
   const [passwordResetError, setPasswordResetError] = useState(null);
   const [passwordResetSuccess, setPasswordResetSuccess] = useState(false);
   const [username, setUsername] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const auth = getAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUsername(user.displayName);
+        setIsLoggedIn(true); 
+      } else {
+        setIsLoggedIn(false); 
       }
     });
 
@@ -43,6 +47,10 @@ export default function Perfil() {
     }
   };
 
+  if (!isLoggedIn) {
+    return <div>Faça login para visualizar seu perfil</div>;
+  }
+
   return (
     <section className="userperfil">
       <h1>Perfil</h1>
@@ -58,7 +66,8 @@ export default function Perfil() {
             placeholder="Nova Senha"
             type="password"
             value={newPassword}
-            onChange={handlePasswordChange} />
+            onChange={handlePasswordChange}
+          />
           <div id="buttonSenha">
             <button onClick={handlePasswordReset}>Confirmar</button>
           </div>
