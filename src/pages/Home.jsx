@@ -32,7 +32,7 @@ export default function Home() {
 
           <Carousel.Caption>
             <h3>RAZOR</h3>
-            <p>A loja dos jogadores, onde a diversão nunca tem fim.</p>
+            <p>Onde a diversão nunca tem fim.</p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -61,23 +61,19 @@ export default function Home() {
       <div className="responsive-div">
         <img src={imagens.mario} alt="Imagem" />
         <p>
-          Bem-vindo à Razor, a sua loja virtual especializada em downloads de jogos online!
-
-          Na Razor, estamos comprometidos em proporcionar a melhor experiência de compra e diversão para os entusiastas de jogos. Nossa extensa coleção de jogos abrange uma ampla variedade de gêneros, desde aventuras épicas até desafios estratégicos, passando por emocionantes jogos de ação e muito mais.
-
-          Nossa plataforma intuitiva e fácil de usar permite que você navegue e descubra novos títulos, além de encontrar seus jogos favoritos em apenas alguns cliques. Com uma interface amigável e informações detalhadas, você terá acesso a descrições, capturas de tela e avaliações dos jogos, garantindo que você faça a escolha certa para sua próxima aventura virtual.
+        A Razor 1911 é um grupo de cracking e demoscene de renome na cena dos jogos de computador. 
+        A história da Razor 1911 remonta ao início da década de 1980, quando foi fundada por um grupo de piratas de software. 
+        Seu nome é inspirado na lâmina de barbear "Gilette Razor" e no ano 1911, que é fictício e simboliza 
+        uma época anterior à era dos computadores
         </p>
       </div>
       <div className="responsive-div1">
         <img src={imagens.st} alt="Imagem" />
         <p>
-          Além disso, a Razor está em constante atualização, trazendo as últimas novidades e lançamentos da indústria de jogos. Mantenha-se sempre atualizado com os melhores jogos do mercado, aproveitando as vantagens exclusivas oferecidas pela nossa loja.
-
-          Nossa equipe dedicada está pronta para ajudá-lo em todas as etapas, desde o momento da compra até o suporte pós-venda. Valorizamos a satisfação do cliente acima de tudo, buscando sempre superar suas expectativas e proporcionar uma experiência memorável.
-
-          Então, prepare-se para mergulhar em um mundo de entretenimento virtual. Explore a Razor e descubra os jogos mais empolgantes e cativantes disponíveis para download imediato. Sua próxima grande aventura começa aqui!
-
-          Bem-vindo à Razor. Junte-se à comunidade de jogadores apaixonados e desfrute de horas de diversão sem limites.
+        No início, a Razor 1911 era conhecida principalmente por criar cracks, que são programas modificados para 
+        contornar medidas de proteção de cópia em jogos. Esses cracks permitiam que os usuários jogassem jogos sem ter que 
+        inserir chaves de ativação ou usar discos originais, tornando-os 
+        populares entre aqueles que não podiam pagar pelos jogos.
         </p>
       </div>
 
